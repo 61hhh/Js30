@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Console Tricks!</title>
+</head>
+<body>
+
+  <p onClick="makeGreen()">×BREAK×DOWN×</p>
+
+  <script>
+    const dogs = [{ name: 'Snickers', age: 2 }, { name: 'hugo', age: 8 }];
+
+    function makeGreen() {
+      const p = document.querySelector('p');
+      p.style.color = '#BADA55';
+      p.style.fontSize = '50px';
+    }
+
+    let console = {
+      isDev: true,
+      log(...args){
+        if(!this.isDev) return;
+        window.console.log("%c停下！","font-szie:60x; color:red");
+        window.console.log(...args);
+      },
+      warn(...args){
+        if(!this.isDev) return;
+        window.console.warn(...args);
+      },
+      error(...args){
+        if(!this.isDev) return;
+        window.console.error(...args);
+      },
+      info(...args){
+        if(!this.isDev) return;
+        window.console.info(...args);
+      },
+      assert(...args){
+        if(!this.isDev) return;
+        window.console.assert(...args);
+      },
+      dir(...args){
+        if(!this.isDev) return;
+        window.console.dir(...args);
+      },
+      table(...args){
+        if(!this.isDev) return;
+        window.console.table(...args);
+      },
+      count(...args){
+        if(!this.isDev) return;
+        window.console.count(...args);
+      },
+      timeEnd(...args){
+        if(!this.isDev) return;
+        window.console.timeEnd(...args);
+      },
+      time(...args){
+        if(!this.isDev) return;
+        window.console.time(...args);
+      },
+    };
+
+    // Regular
+    console.log(123,456);
+
+    // Interpolated
+    console.log('Hello I am a %s string!', '💩');
+
+    let name = "61hhh" ;
+    console.log(`My name is ${name} !!`);//ES6模板写法
+    console.log("My name is %s !!","LYhhh");
+
+    // Styled
+
+    // warning!
+    console.warn("Oh shit this is a warning");
+
+    // Error :|
+    console.error("This is a Fucking mistake!");
+
+    // Info:向web控制台输出一个通知信息。仅在Firefox，web控制台的日志中的项目旁边会显示一个小的‘I‘图标
+    console.info("info类似log啦");
+
+    // Testing 前面是判断条件，后面是条件错误会显示的结果
+    console.assert(true,"讯息");
+    console.assert(false,"前置条件错误才会触发的讯息");
+    console.assert('',"前置条件错误才会触发的讯息");
+    console.assert(NaN,"前置条件错误才会触发的讯息");
+    console.assert(0,"前置条件错误才会触发的讯息");
+    console.assert(undefined,"前置条件错误才会触发的讯息");
+
+
+    // clearing
+
+    // Viewing DOM Elements  Console.dir在控制台中显示指定JavaScript对象的属性，并通过类似文件树样式的交互列表显示。
+    let p = document.querySelector("p");
+    
+    console.log(p);
+    console.log(dogs);
+    console.dir(p);
+    console.dir(dogs);
+
+    // Grouping together 以表格形式显示，可以简单筛选
+    console.table(dogs);
+    console.table(dogs,['name']);
+
+    // counting 输出 count() 被调用的次数。此函数接受一个可选参数 label。
+    console.count('Wes');
+    console.count('Wes');
+    console.count('Steve');
+    console.count('Steve');
+    console.count('Wes');
+    console.count('Steve');
+    console.count('Wes');
+    console.count('Steve');
+    console.count('Steve');
+    console.count('Steve');
+    console.count('Steve');
+    console.count('Steve');
+
+    // timing
+    console.time("test1");
+    let i,j;
+    for(i = 1; i < 10000000; i++){
+      j = i;
+    }
+    console.timeEnd("test1");
+
+    console.time("test2");
+    for(let i = 1; i < 10000000; i++){
+      let j = i;
+    }
+    console.timeEnd("test2");
+
+    console.time('fetching data');
+    fetch('https://api.github.com/users/wesbos')
+      .then(data => data.json())
+      .then(data => {
+        console.timeEnd('fetching data');
+        console.log(data);
+      });
+
+    console.table(dogs);
+
+  </script>
+</body>
+</html>

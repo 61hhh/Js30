@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>HTML Video Player</title>
+  <link rel="stylesheet" href="style.css">
+  <style >
+    body{
+      background-image: url("http://ww1.sinaimg.cn/large/5389c72bjw6del49fli5qj.jpg");
+    }
+  </style>
+</head>
+<body>
+
+   <div class="player">
+     <video class="player__video viewer" src="http://124.42.242.25/om.tc.qq.com/AbLAa-Q6KuIxTeZoBCBqjbA6bm3y8X0XALJjm8nuKDbE/uwMROfz2r5zAoaQXGdGnC2dfDma7NyshNhpHvcEisM-VRrjn/y0905u2gl8i.mp4?sdtfrom=v5010&guid=ba01e5b4bbf1f62724f995c170057207&vkey=C61CAFC8E59C6F05DFD7848B0284D758D820FAA560F591B00292EDCA1C744D20D2090AC0CD46E81D2C749CF5EDBD6A7536EB144058050D17D83A9A899A09B38EF3AB9B759A9DD893F1FBB3E34EFE632C0DCFD2A27018235834A3A1864F0C33AEF5C4C190CE78ACF29A4BA08187C35BFBF2E31C6F3A49E7446A350A7A962112FD&platform=2"></video>
+
+     <div class="player__controls">
+
+       <div class="progress">
+        <div class="progress__filled"></div>
+       </div>
+
+       <button class="player__button toggle" title="Toggle Play">►</button>
+       <input type="range" name="volume" class="player__slider" min="0" max="1" step="0.05" value="1">
+       <input type="range" name="playbackRate" class="player__slider" min="0.5" max="2" step="0.25" value="1">
+       <button class="progress_timer" >00:00:00</button>
+       <button class="total_timer">00:00:00</button>
+       <button data-skip="-10" class="player__button skip" background:none>« 10s</button>
+       <button data-skip="25" class="player__button skip">25s »</button>
+
+       <button class="expand">[👈👉]</button>
+
+     </div>
+   </div>
+
+  <script src="./scripts61.js"></script>
+</body>
+</html>

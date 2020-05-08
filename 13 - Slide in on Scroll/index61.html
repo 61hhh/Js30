@@ -45,7 +45,6 @@
     //resize、scroll针对滚轴操作
 
     //针对连续触发的事件进行过滤包装
-    //
     function debounce(func, wait = 20, immediate = true) {
       var timeout;
       return function() {
@@ -62,25 +61,24 @@
     }
 
 
-    let images = document.querySelectorAll(".slide-in");
-
+    const images = document.querySelectorAll('.slide-in');
     function scrollHandler(){
-      // console.log("scroll",new Date().getTime());
       // console.log(window.scrollY);
       images.forEach(img => {
-        let windowTop = window.scroolY;
-        let windowBottom = windowTop + window.innerHeight;
-        let imageMiddle = img.offsetTop + img.Height / 2 ;
-        if(imageMiddle < windowBottom && imageMiddle > windowTop ){
+        let windowTop = window.scroolY;//页面顶部
+        let windowBottom = windowTop + window.innerHeight;//页面底部
+        let Middleshow = (window.scrollY + window.innerHeight) - img.height / 2;//图片中部
+        if((Middleshow > img.offsetTop) && (imageMiddle > windowTop) ){
+          console.log("img",img.offsetTop);
           //只要图片中段在页面内就会一直加，不过由于已经有了active因此不明显
-          img.classList.add("active");
+          img.classList.add('active');
         }else{
-          img.classList.remove("active");
+          console.log("scroll",window.scrollY);
+          img.classList.remove('active');
         }
       });
     }
-
-    window.addEventListener("scroll",debounce(scrollHandler));
+    window.addEventListener('scroll', debounce(scrollHandler));
     // window.addEventListener("scroll",scrollHandler);
 
   </script>

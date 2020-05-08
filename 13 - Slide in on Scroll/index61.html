@@ -63,17 +63,32 @@
 
     const images = document.querySelectorAll('.slide-in');
     function scrollHandler(){
-      // console.log(window.scrollY);
+      // // console.log(window.scrollY);
+      // images.forEach(img => {
+      //   let windowTop = window.scroolY;//页面顶部
+      //   let windowBottom = windowTop + window.innerHeight;//页面底部
+      //   let imageMiddle = img.offsetTop + img.Height / 2 ;//图片中部
+      //   if((imageMiddle < windowBottom) && (imageMiddle > windowTop) ){
+      //     console.log("scroll",img.offsetTop);
+      //     //只要图片中段在页面内就会一直加，不过由于已经有了active因此不明显
+      //     img.classList.add('active');
+      //   }else{
+      //     console.log("scroll",window.scrollY);
+      //     img.classList.remove('active');
+      //   }
+      // });
       images.forEach(img => {
-        let windowTop = window.scroolY;//页面顶部
-        let windowBottom = windowTop + window.innerHeight;//页面底部
-        let Middleshow = (window.scrollY + window.innerHeight) - img.height / 2;//图片中部
-        if((Middleshow > img.offsetTop) && (imageMiddle > windowTop) ){
+        // half way through the image
+        const slideInAt = (window.scrollY + window.innerHeight) - img.height / 2;
+        // bottom of the image
+        const imageBottom = img.offsetTop + img.height;
+        const isHalfShown = slideInAt > img.offsetTop;
+        const isNotScrolledPast = window.scrollY < imageBottom;
+        if (isHalfShown && isNotScrolledPast) {
           console.log("img",img.offsetTop);
-          //只要图片中段在页面内就会一直加，不过由于已经有了active因此不明显
           img.classList.add('active');
-        }else{
-          console.log("scroll",window.scrollY);
+        } else {
+          console.log("other",img.offsetTop);
           img.classList.remove('active');
         }
       });

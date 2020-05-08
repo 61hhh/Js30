@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JS Reference VS Copy</title>
+</head>
+<body>
+
+  <script>
+    // start with strings, numbers and booleans
+    let a = 'LY1';
+    let b = a;
+    a = 'ly2';
+    console.log(a,b);//ly2,LY
+
+    let c = 0
+    let d = c
+    c++
+    console.log(c,d)
+
+    let e = true
+    let f = e
+    e = !f
+    console.log(e,f)
+
+
+    console.log("----关于数组的内容----");
+    // Let's say we have an array
+    const players = ['Wes', 'Sarah', 'Ryan', 'Poppy'];
+
+    // and we want to make a copy of it.
+    const team = players;
+    console.log(players, team);
+
+    // You might think we can just do something like this:
+    team[3] = '333third';
+    // however what happens when we update that array?
+    console.log(team,players);
+    // now here is the problem!
+    // oh no - we have edited the original array too!
+    // Why? It's because that is an array reference, not an array copy. They both point to the same array!
+    // So, how do we fix this? We take a copy instead!
+
+    //使用Array.prototype.slice()，拷贝原数组
+    const team2 = players.slice();
+    team2[3] = 'messi10';
+    console.log("使用slice()拷贝：");
+    console.log(players,team2);
+
+    //使用Array.prototype.concat()将空数组和原数组合并
+    const team3 = [].concat(players);
+    team3[3] = 'CR7';
+    console.log("使用concat()合并：");
+    console.log(players, team3);
+
+    //ES6扩展语法
+    const team4 = [...players];
+    team4[3] = 'AlexAndro';
+    console.log("使用ES6：");
+    console.log(players,team4);
+
+    //使用Array.from()效果类似
+    const team5 = Array.from(players);
+    team5[3] = 'Drogba';
+    console.log("使用Array.from()：");
+    console.log(players,team5);
+
+    
+    console.log("使用slice()的另一个：");
+    function createObj(name){
+      return name;
+    }
+    let p1 = createObj("name1");
+    let p2 = createObj("name2");
+    let p3 = createObj("name3");
+    let p4 = createObj("name4");
+    let f1 = [p1,p2,p3,p4];
+    let f2 = f1.slice();
+    f2[0]= {name:"name not 1"};
+    console.log(f1,f2);
+
+    // now when we update it, the original one isn't changed
+
+    // The same thing goes for objects, let's say we have a person object
+
+    console.log("----关于Object的内容----");
+    // with Objects
+    let person = {
+      name: 'Wes Bos',
+      age: 80
+    };
+
+    // and think we make a copy:
+    let person2 = person;
+    // person = "XXX";//case1
+    // console.log(person,person2);
+    person.name = "xxx";//case2
+    console.log(person,person2);
+
+
+    // how do we take a copy instead?
+    const cap2 = Object.assign({}, person, { number: 99, age: 12 });
+    console.log(cap2);
+
+    // We will hopefully soon see the object ...spread
+
+    //深拷贝
+    const wes = {
+      name: 'Wes',
+      age: 100,
+      social: {
+        twitter: '@wesbos',
+        facebook: 'wesbos.developer'
+      }
+    };
+
+    console.clear();
+    console.log(wes);
+
+    const dev = Object.assign({}, wes);
+    const dev2 = JSON.parse(JSON.stringify(wes));
+    console.log(dev);
+    console.log(dev2);
+
+  </script>
+
+</body>
+</html>

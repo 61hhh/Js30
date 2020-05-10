@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Mouse Shadow</title>
+</head>
+<body>
+
+  <div class="hero">
+    <h1 contenteditable>🔥WOAH!</h1>
+  </div>
+
+  <style>
+  html {
+    color: black;
+    font-family: sans-serif;
+  }
+
+  body {
+    margin: 0;
+  }
+
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: black;
+  }
+
+  h1 {
+    text-shadow: 10px 10px 0 rgba(0,0,0,1);
+    font-size: 100px;
+  }
+  </style>
+
+<script>
+  (function(){
+
+    let length = 200;
+    let text = document.querySelector("h1");
+
+    document
+      .querySelector('.hero')
+      .addEventListener("mousemove",function(e){
+        // console.log(e);
+
+        //1.old school
+        // let x = e.offsetX;
+        // let y = e.offsetY;
+        //2.new school
+        let { offsetX,offsetY } = e;
+        //3.newnew school
+        // let { offsetX: x, offsetY: y } = e;
+
+        if(this.target !== this){
+          offsetX += e.target.offsetLeft;
+          offsetY += e.target.offsetTop;
+        }
+        let lengthX =  
+          Math.floor(offsetX / this.offsetWidth * length) * 2 -length;
+        let lengthY =  
+          Math.floor(offsetY / this.offsetHeight * length) * 2 -length;
+
+        text.style.textShadow = `
+          ${lengthX }px ${lengthY }px 2px rgba(255,255,0,0.8),
+          ${lengthX * -1}px ${lengthY }px 2px rgba(0,255,255,0.8),
+          ${lengthX }px ${lengthY *-1}px 2px rgba(255,0,255,0.8),
+          ${lengthX *-1}px ${lengthY *-1}px 2px rgba(0,0,0,0.8)
+        `;
+    });
+
+  })()
+</script>
+</body>
+</html>

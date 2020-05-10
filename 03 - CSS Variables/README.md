@@ -4,6 +4,8 @@
 
 使用 CSS4 中的自定义属性和 data -* 来自己做一个属于自己的相册吧，可以根据需求再添加更多的样式！
 
+![](https://pic.downk.cc/item/5eb816d5c2a9a83be527c97d.png)
+
 ### 任务目的
 
 #### HTML

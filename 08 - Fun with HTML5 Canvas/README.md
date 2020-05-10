@@ -7,6 +7,8 @@
 
 用 HTML5 中的 Canvas 的路径绘制实现一个绘画板，可供鼠标画画，颜色呈彩虹色渐变，画笔大小同样呈渐变效果。
 
+![](https://pic.downk.cc/item/5eb817c9c2a9a83be52a2ba5.png)
+
 ## 涉及特性
 
 Canvas：

@@ -6,6 +6,8 @@
 
 初始文档的 DOM 结构：以 `.panels` 为父 `div` 之下，有 5 个类名为 `.panel` 的 `div`，这 5 个各含有 3 个子 `p` 标签。而相应的 CSS 样式中，动画时间等特性已经设定好，只需要完成不同状态下的页面布局以及事件监听即可。
 
+![](https://pic.downk.cc/item/5eb8172ec2a9a83be528ae21.png)
+
 ## 涉及特性
 
 - display: flex

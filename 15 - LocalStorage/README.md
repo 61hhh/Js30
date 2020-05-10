@@ -8,6 +8,8 @@
 
 现在的初始页面中，点击提交按钮（Add Item）时页面默认触发 `submit` 事件，并重新加载页面，这导致重新加载之后的页面中，已丢失刚提交的内容。页面所用到的 CSS 文件已经完成了，我们需要做的是完成 JavaScript 部分的内容，以实现目标效果。
 
+![](https://pic.downk.cc/item/5eb81918c2a9a83be52d5b06.png)
+
 作者使用的是submit提交form表单，基本的思想可以理解为：
 
 - 更新JS资料
@@ -30,7 +32,7 @@
 ## 过程指南
 
 1. 关于使用ES6模板添加`ul`的`li`标签实现html代码的更新：
-    
+   
     ```javascript
       function createList(plates = [], platesList) {
         platesList.innerHTML = plates.map((plate, i) => {

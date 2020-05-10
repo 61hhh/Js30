@@ -7,6 +7,8 @@
 
 初始文档中提供了一组 `checkbox` 类型的 `input` 元素，选中某个复选框时，其 `<p>` 标签中的文字会显示删除线。
 
+![](https://pic.downk.cc/item/5eb81814c2a9a83be52ae508.png)
+
 1. 获取所有的 `<input>` 元素，并添加事件监听
 
 	```js

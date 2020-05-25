@@ -3,7 +3,69 @@
 <head>
   <meta charset="UTF-8">
   <title>架子鼓!!!</title>
-  <link rel="stylesheet" href="css_style/layout.css">
+  <!-- <link rel="stylesheet" href="css_style/layout.css"> -->
+  <style>
+    html, body {
+    margin: 0;
+    padding: 0;
+  }
+  
+  html {
+    font-size: 10px;
+    font-family: "微软雅黑", "sans-serif";
+  }
+  
+  .bg {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    background: url("https://pic.downk.cc/item/5eb67a3fc2a9a83be5d52334.jpg") left center no-repeat;
+    background-size: cover;
+  }
+  
+  .bg .keys {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    flex: 1;
+  }
+  
+  .key {
+    border: .4rem solid rgba(157, 157, 157, 0.4);
+    border-radius: .5rem;
+    margin: 1rem;
+    font-size: 1.5rem;
+    padding: 1rem .5rem;
+    transition: all .15s ease;
+    width: 10rem;
+    text-align: center;
+    color: white;
+    background: rgba(157, 157, 157, 0.4);
+    text-shadow: 0 0 .5rem black;
+    box-shadow: 0 0 1rem rgba(157, 157, 157, 0.4);
+  }
+  
+  kbd {
+    display: block;
+    font-size: 4rem;
+  }
+  
+  .playing {
+    transform: scale(1.2);
+    border-color: #ffc600;
+    box-shadow: 0 0 1rem #ffc600;
+  }
+  
+  .sound {
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    letter-spacing: .1rem;
+    color: #ffc600;
+  }
+  </style>
 </head>
 <body>
   <div class="bg">
@@ -58,5 +120,32 @@
   <audio data-key="75" src="sounds/tom.wav"></audio>
   <audio data-key="76" src="sounds/tink.wav"></audio>
 </body>
-<script src="js_code/player.js" defer></script>
+<script>
+  (function () {
+  function playSound(e) {
+    const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
+    const key = document.querySelector(`.key[data-key="${e.keyCode}"]`);
+    if(!audio) return false;
+
+    audio.currentTime = 0;
+    audio.play();
+
+    key.classList.add('playing');
+  }
+
+  const keys = document.querySelectorAll('.key');
+
+  keys.forEach( key => {
+    return key.addEventListener('transitionend', removeTransition);
+  });
+
+  function removeTransition(e) {
+    if(e.propertyName !== 'transform') return false;
+
+    this.classList.remove('playing');
+  }
+
+  window.addEventListener('keydown', playSound);
+}());
+</script>
 </html>

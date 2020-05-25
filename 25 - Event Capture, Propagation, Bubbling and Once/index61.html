@@ -52,12 +52,14 @@
   }
   div.forEach(div => div.addEventListener('click', logText, {
     capture: false,
+    once: false,
   }));
 
   button.addEventListener('click', () => {
     console.log('Click!!!');
   }, {
-    once: false
+    capture: false,
+    once: false,
   });
 </script>
 </body>

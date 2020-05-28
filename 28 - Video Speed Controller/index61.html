@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Video Speed Scrubber</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="wrapper">
+    <video class="flex" width="765" height="430" src="https://vdept.bdstatic.com/61483667535379626276494d4c4a4653/3744763373547468/d9c44a6be2a0fa224765c4c1b64f6d919a6e9f5b58a520ba825d5f45302e2cb1de389b4db8227395388ac5f022d41acf.mp4?auth_key=1590679120-0-0-de8b84bc93c12958d7abe031867d6cb1" loop controls>
+    </video>
+    <div class="speed">
+      <div class="speed-bar">1×</div>
+    </div>
+  </div>
+
+<script>
+  //在上一节基础上，继续学做move的判断
+  const speed  = document.querySelector('.speed');
+  const bar = document.querySelector('.speed-bar');
+  const video = document.querySelector('video');
+
+  function moveHandler(e){
+    const y = e.pageY - this.offsetTop;
+    let percent = y / this.offsetHeight;
+    const height = Math.round(percent * 100) + "%";
+
+    bar.style.height = height;
+
+    //速度范围 0-1 => 0.5-2 
+    //(0-1)*(max - min) + min
+    percent = percent * 1.5 + 0.5;
+    //check确认
+    percent = percent > 2 ? 2 : percent < 0.5 ? 0.5 : percent;
+    //显示
+    bar.textContent = Math.round(percent *100) / 100 + "x";
+    console.log(percent);
+
+    video.playbackRate = percent;
+  }
+
+  speed.addEventListener("mousemove",moveHandler);
+  
+</script>
+</body>
+</html>

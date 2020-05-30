@@ -4,7 +4,7 @@
 > 简介：[JavaScript30](https://javascript30.com) 是 [Wes Bos](https://github.com/wesbos) 推出的一个 30 天挑战。项目免费提供了 30 个视频教程、30 个挑战的起始文档和 30 个挑战解决方案源代码。目的是帮助人们用纯 JavaScript 来写东西，不借助框架和库，也不使用编译器和引用。
 
 ## 挑战任务
-本次的挑战任务，是利用浏览器内置`Web Geolocation API`,将获取到的地理位置及相关坐标，与`index-start.html`中的可视化指南针连接在一起。 
+本次的挑战任务，是利用浏览器内置`Web Geolocation API`,将获取到的地理位置及相关坐标，与`index-start.html`中的可视化指南针连接在一起。 原FINISH代码在电脑上没有显示，因此参照Soyaine的代码
 
 ## 相关知识
 1.有关地理位置接口`Geolocation`的说明，可查看[MDN](https://developer.mozilla.org/zh-CN/docs/Web/API/Geolocation)中的相关解释。    
@@ -17,6 +17,7 @@
 
 ## 过程指南
 1.使用`getCurrentPosition()`方法获得相关信息   
+
 ```js
   if(navigator.geolocation){
      navigator.geolocation.getCurrentPosition(success, error, options);
@@ -25,6 +26,7 @@
   }
 ```
 2.当成功返回结果时，在控制台输出结果，并根据结果对相应的DOM元素进行样式调整   
+
 ```js
 function success(pos) {
   console.log(pos);
